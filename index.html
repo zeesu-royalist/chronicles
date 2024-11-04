@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeesu Chronicles</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #0A0A0A, #1C1C1C, #323437, #4A4D51, #70757A, #B8B8B8, #0A0A0A, #1C1C1C, #2E2E2E, #3B4B54, #5A6B7D, #A0A5A9, #D9D9D9);
+            background-size: 1000% 1000%;
+            animation: gradientAnimation 20s ease infinite;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .topBox {
+            padding: 40px;
+            margin: 20px auto;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            max-width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+            text-shadow: 6px 6px 9px rgba(0, 0, 0, 0.9);
+        }
+
+        p {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #D3D3D3;
+        }
+
+        .promo-btn {
+            margin-top: 8px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: gray;
+            background-color: transparent;
+            border: 2px solid #5D4037;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .promo-btn:hover {
+            background-color: white;
+        }
+
+        @media (max-width: 1024px) {
+            .topBox {
+                padding: 30px;
+            }
+
+            h2 {
+                font-size: 2.2em;
+            }
+
+            .promo-btn {
+                font-size: 1.1rem;
+                padding: 8px 16px;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .topBox {
+                padding: 20px;
+                max-width: 95%;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .promo-btn {
+                font-size: 1rem;
+                padding: 6px 12px;
+            }
+
+            p {
+                font-size: 0.85em;
+            }
+        }
+
+
+        /* Basic reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main container for the image boxes */
+        .image-box-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            overflow-x: auto;
+            /* Allows horizontal scrolling on small screens */
+            padding: 0px;
+            white-space: nowrap;
+            /* Keeps all boxes in a single line */
+        }
+
+        /* Individual image box styling */
+        .image-box {
+            flex: 0 0 auto;
+            /* Prevents flex items from growing/shrinking */
+            width: 80px;
+            /* Adjust this width as needed */
+            text-align: center;
+            background-color: black;
+            border: 1px solid #5D4037;
+            padding: 10px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover effect */
+        .image-box:hover {
+            transform: scale(1.05);
+            border-color: #5D4037;
+        }
+
+        /* Image styling */
+        .image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* Text below the image */
+        .image-box a {
+            margin-top: 10px;
+            font-size: 14px;
+            color: lightgray;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .image-box {
+                width: 120px;
+                /* Smaller width on small screens */
+            }
+        }
+
+        @media (max-width: 400px) {
+            .image-box {
+                width: 100px;
+                /* Even smaller width on very small screens */
+            }
+        }
+
+        /* Basic reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main container styling */
+        .info-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Styling each info box */
+        .info-box {
+            display: flex;
+            align-items: center;
+            width: 90%;
+            max-width: 800px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            background-color: #1c1c1e;
+            color: #fff;
+            gap: 20px;
+        }
+
+        /* Image placeholder styling */
+        .info-box img {
+            width: 80px;
+            height: 80px;
+            background-color: #333;
+            border: 1px solid #fff;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        /* Content styling inside the info box */
+        .info-content {
+            flex: 1;
+        }
+
+        /* Title styling */
+        .info-content h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        /* Paragraph styling */
+        .info-content p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        /* "Know more" button styling */
+        .info-box a {
+            text-decoration: none;
+            color: #fff;
+            padding: 8px 16px;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .info-box a:hover {
+            background-color: #333;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .info-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .info-box img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="topBox">
+        <h2>Zeesu Chronicles</h2>
+        <p>Unveiling the wonders of Facts, Technology, and Space. Where curiosity meets knowledge, <br>And every discovery sparks inspiration.</p>
+        <a href="https://www.google.com/search?q=zeesu+royalist" target="_blank">
+            <button class="promo-btn">Search ➔</button> </a>
+    </div>
+
+    <div class="image-box-container">
+        <div class="image-box">
+            <img src="https://i0.wp.com/kashmirreader.com/wp-content/uploads/2023/09/Thrilling-odyssey-of-space-exploration.jpg?fit=624%2C415&ssl=1" alt="Image 1"> <br>
+            <a href="https://viewspace.org" target="blank">Space</a>
+        </div>
+        <div class="image-box">
+            <img src="https://cdn.mos.cms.futurecdn.net/253MzWzDFZpiHVY2S4PKfM.jpg" alt="Image 2"> <br>
+            <a href="https://www.nasa.gov/live/" target="blank">Nebula</a>
+        </div>
+        <div class="image-box">
+            <img src="https://www.themandarin.com.au/wp-content/uploads/sites/5/2020/04/satellite.jpg?fit=794%2C530" alt="Image 3"> <br>
+            <a href="https://spacetelescopelive.org/hubble?obsId=01JB0B6BF005D8RHXB0BB1259C" target="blank">Satellite</a>
+        </div>
+        <div class="image-box">
+            <img src="https://www.lcocanada.com/wp-content/uploads/unnamed-2024-01-23T115825.003.jpg" alt="Image 4"> <br>
+            <a href="https://sketchfab.com/3d-models/animated-human-body-anatomy-51ebbf617d4f4faeb099d70336e13a58" target="blank">Human</a>
+        </div>
+        <div class="image-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXUGttT0sSB04lBTVoIbS8cFaJuBzomEdd6J7Z6rcQI9bX2f-aEnI8J9ssL4Esv9vW0f4&usqp=CAU" alt="Image 5"> <br>
+            <a href="https://pixabay.com/videos/search/technology%203d/" target="blank">Tech</a>
+        </div>
+        <div class="image-box">
+            <img src="https://img.freepik.com/free-vector/breaking-news-concept_23-2148514216.jpg" alt="Image 5"> <br>
+            <a href="https://timesofindia.indiatimes.com" target="blank">News</a>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 15px;">- Do you know -</h3>
+    <p> Read all facts and information to gain more knowledge </p>
+
+    <div class="info-container">
+
+        <!-- Info Box 1 -->
+        <div class="info-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-ube9rv4pEWbG4yhEonvkZ175FXBds7ZH6A&s" alt="Image">
+            <div class="info-content">
+                <h3>Jupiter have faint narrow rings.</h3>
+                <p>Unlike Saturn, which has bright ice rings, Jupiter has dark rings which are made up of dust and tiny pieces of rock. Jupiter's rings were discovered by NASA's Voyager 1 mission in 1980.</p>
+            </div>
+            <a href="https://www.savit.in/unknown-facts.php" target="blank">Know more</a>
+        </div>
+
+        <!-- Info Box 2 -->
+        <div class="info-box">
+            <img src="https://miro.medium.com/v2/resize:fit:1200/1*gpuPKgFlVd6opmOB4-DlhQ.jpeg" alt="Image">
+            <div class="info-content">
+                <h3>Coca-Cola was originally green.</h3>
+                <p>This is a total myth as Coca-Cola has always been the same colour right from the start since its invention in 1886. You should try reading Coca-Cola story of John S. Pemberton from Atlanta in 1886 for better clarifications.
+                </p>
+            </div>
+            <a href="https://www.savit.in/unknown-facts.php" target="blank">Know more</a>
+        </div>
+
+        <!-- Info Box 3 -->
+        <div class="info-box">
+            <img src="https://www.wikihow.com/images/thumb/6/67/Lick-Your-Elbow-Step-7-Version-3.jpg/v4-460px-Lick-Your-Elbow-Step-7-Version-3.jpg" alt="Image">
+            <div class="info-content">
+                <h3>Impossible to lick your elbow.</h3>
+                <p>This is true, the entire joint of the elbow is between the upper and lower arm and most people seem to think that the elbow is the pointy part on the outside of their arm when they bend it.
+                </p>
+            </div>
+            <a href="https://www.savit.in/unknown-facts.php" target="blank">Know more</a>
+        </div>
+
+        <!-- Info Box 4 -->
+        <div class="info-box">
+            <img src="https://op.ua/images/common/4/3/8/2/5ff2ff74acb12.png" alt="Image">
+            <div class="info-content">
+                <h3>Do you know about 1x1.</h3>
+                <p>If you multiply 111,111,111 x 111,111,111 so answer will be = 12,345,678,987,654,321</p>
+            </div>
+            <a href="https://www.savit.in/unknown-facts.php" target="blank">Know more</a>
+        </div>
+
+        <!-- Info Box 5 -->
+        <div class="info-box">
+            <img src="https://static.wixstatic.com/media/a4ca3f_6c9e78fed14f4673936b4ccd696bd05e~mv2.jpg/v1/fill/w_280,h_370,al_c,lg_1,q_80/a4ca3f_6c9e78fed14f4673936b4ccd696bd05e~mv2.jpg" alt="Image">
+            <div class="info-content">
+                <h3>A crocodile cannot stick its tongue out.</h3>
+                <p>Crocodiles have a membrane which holds their tongue in place on the roof of their mouth so it does not move. According to BBC, this nearly makes it impossible for them to stick it outside of their narrow mouths.
+                </p>
+            </div>
+            <a href="https://www.savit.in/unknown-facts.php" target="blank">Know more</a>
+        </div>
+
+        <!-- Info Box 6 -->
+        <div class="info-box">
+            <img src="https://www.grunge.com/img/gallery/how-butterflies-use-their-feet-to-taste-their-food/intro-1668281831.jpg" alt="Image">
+            <div class="info-content">
+                <h3>Butterflies taste with their feet.</h3>
+                <p>This may sound strange to us humans but butterflies do rely on their feet to taste food as they have sensors on their feet which helps them locate food for their caterpillars. So, they stand on a leaf to try the taste.
+                </p>
+            </div>
+            <a href="https://www.savit.in/unknown-facts.php" target="blank">Know more</a>
+        </div>
+
+        <!-- Info Box 7 -->
+        <div class="info-box">
+            <img src="https://media.licdn.com/dms/image/v2/D4E22AQFmzKZsPTrXZA/feedshare-shrink_800/feedshare-shrink_800/0/1688990769692?e=2147483647&v=beta&t=0RYC4Ef0RA8GFSwO5-haVZQTS-jPJAkaDCZfCTKXe6U" alt="Image">
+            <div class="info-content">
+                <h3>lighter was invented before the match.</h3>
+                <p>In the 16th century, lighters were nothing more than just converted pistols. It was not until 1823, a German chemist named Johann Wolfgang Doebereiner is credited as the first person to invent a lighter.
+                </p>
+            </div>
+            <a href="https://www.savit.in/unknown-facts.php" target="blank">Know more</a>
+        </div>
+
+        <!-- Info Box 8 -->
+        <div class="info-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCWLH0TzAoOjEoAY1ZLmy2_L3RJN1fXG6ePw&s" alt="Image">
+            <div class="info-content">
+                <h3>Lipstick contains fish scales.</h3>
+                <p>Most lipsticks contain a byproduct of fish scales called pearlessence, which gives them a shiny finish. Pearlessence, derived from herring, has synthetic alternatives, though they're less common.</p>
+            </div>
+            <a href="https://www.savit.in/unknown-facts.php" target="blank">Know more</a>
+        </div>
+    </div>
+
+    <!-- Social Links Section -->
+    <style>
+        /* Responsive Social Section */
+        .social {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .social a {
+            font-size: 25px;
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .social a:hover {
+            color: #007bff;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .social a {
+                font-size: 24px;
+            }
+
+            .offer-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .offer-card p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .social a {
+                font-size: 18px;
+            }
+
+            .offer-card h3 {
+                font-size: 1rem;
+            }
+
+            .offer-card p {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+    <h3 style="margin-top: 20px;">- Explore my other websites -</h3>
+    <p> Your love and Support will make me happy </p>
+    <section class="social">
+        <a href="https://zeesu-royalist.github.io" target="_blank" title="GitHub"><i class="fab fa-github"></i> web-1</a>
+        <a href="https://zeesu-royalist.github.io/Zeesu-Mart/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i> web-2</a>
+        <a href="https://zeesu-royalist.github.io/Zeesu-Delights/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i> web-3</a>
+        <a href="https://zeesu-royalist.github.io/Legacy/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i> web-4</a>      
+        <a href="https://zeesu-royalist.odoo.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i> web-5</a>
+        <a href="https://draft.blogger.com/profile/12271293820536501343" target="_blank" title="YouTube"><i class="fab fa-youtube"></i> web-6</a>
+        <a href="https://zeesuroyalist.weebly.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i> web-7</a>
+
+    </section>
+
+
+    <style>
+        /* Basic Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Footer Container */
+        .footer {
+            background-color: #1c1c1e;
+            padding: 20px;
+            border-radius: 12px;
+            color: #fff;
+            text-align: center;
+            margin: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Footer Heading */
+        .footer h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .footer p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #aaa;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            /* This allows icons to wrap on smaller screens */
+        }
+
+        /* Individual Icon Styling */
+        .social-icons a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            padding: 10px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Icon Hover Effects */
+        .social-icons a:hover {
+            background-color: #333;
+        }
+
+        /* Email Link */
+        .email-link {
+            display: block;
+            margin-top: 10px;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* Copyright */
+        .copyright {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            .footer {
+                padding: 15px;
+            }
+
+            .footer h2 {
+                font-size: 20px;
+            }
+
+            .social-icons a {
+                font-size: 20px;
+                width: 35px;
+                height: 35px;
+            }
+
+            /* Reduces gap between icons on small screens */
+            .social-icons {
+                gap: 10px;
+            }
+        }
+    </style>
+    </head>
+
+    <body>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <h2>Connect with Me</h2>
+            <p>Follow me on social media to stay updated!</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/mohammad-jishan-4361972ba/" target="_blank" title="LinkedIn">🔗</a>
+                <a href="https://www.instagram.com/zeesu_royalist/" target="_blank" title="Instagram">📷</a>
+                <a href="https://www.facebook.com/p/Zeesu-Royalist-100064169071412/" target="_blank" title="Facebook">📘</a>
+                <a href="https://x.com/zeesuroyalist" target="_blank" title="Twitter">🐦</a>
+                <a href="https://www.youtube.com/@zeesu_royalist" target="_blank" title="YouTube">▶️</a>
+                <a href="https://wa.me/message/EERUGRMFY7U4M1" target="_blank" title="WhatsApp">💬</a>
+                <a href="https://in.pinterest.com/zeesu_royalist/" target="_blank" title="Pinterest">📌</a>
+                <a href="https://www.snapchat.com/add/zeesu_royalist" target="_blank" title="Snapchat">👻</a>
+                <a href="https://zeesuroyalist.tumblr.com/likes" target="_blank" title="Tumblr">ꝷ</a>
+                <a href="https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2F100013460175762%2F%3Fhandler%3Dm.me" target="_blank" title="FB Messenger">📬</a>
+                <a href="https://github.com/zeesu-royalist" target="_blank" title="GitHub">😺</a>
+            </div>
+            <a href="mailto:rzeesu@gmail.com" class="email-link">Email: rzeesu@gmail.com</a>
+            <div class="copyright">
+                &copy; 2024 Zeesu Chronicles. All rights reserved.
+            </div>
+        </div>
+
+    </body>
+
+</html>
